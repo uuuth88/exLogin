@@ -17,5 +17,10 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getList();
 	}
 
+	@Override
+	public int memberjoin(MemberVO memberVO) {
+		return dao.join(memberVO);
+	}
+
 }
 

@@ -2,11 +2,13 @@ package com.uth.login.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import com.uth.login.model.MemberVO;
 import com.uth.login.service.MemberService;
 
@@ -35,9 +37,10 @@ public class MemberController {
 /*
  * 회원가입 메소드 구현 후 로그인 페이지(/member/login)로 보내기	
  */
-	@GetMapping("/join")
-	public String memberJoin() {
-		
+	@PostMapping("/join")
+	public String memberJoin(Model model) {
+		MemberVO vo = new MemberVO();
+		vo.setMember_id(requ);
 		
 		return "redirect:member/login";
 	}

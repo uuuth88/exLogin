@@ -12,8 +12,8 @@ import com.uth.login.model.MemberVO;
 public class MemberDaoImpl implements MemberDao {
 	@Autowired
 	private SqlSession ss;
-	@Autowired
-	private MemberVO memberVO;
+//	@Autowired
+//	private MemberVO memberVO;
 
 	@Override
 	public List<MemberVO> getList() {
