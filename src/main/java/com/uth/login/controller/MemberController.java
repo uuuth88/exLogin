@@ -16,6 +16,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private MemberVO memberVO;
 /*
  * 로그인 하지 않으면 접근하지 못하게 만들기	
  */
