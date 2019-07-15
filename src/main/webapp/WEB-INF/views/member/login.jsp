@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set value="${pageContext.request.contextPath }" var="contextPath"/>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,21 +21,27 @@
 	<link rel="stylesheet" type="text/css" href="../resources/css/util.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/main.css">
 <!--===============================================================================================-->
+
+	<script type="text/javascript">
+		function clickbtn() {
+			document.getElementById("loginForm").submit();
+		}
+	</script>
 </head>
 <body>
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('../resources/images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" id="loginForm" method="post" action="${contextPath }/member/login">
 					<span class="login100-form-title p-b-34 p-t-27">
 						L O G I N
 					</span>
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="id" placeholder="ID">
+						<input class="input100" type="text" name="member_id" placeholder="ID">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="member_pw" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 					<div class="contact100-form-checkbox">
@@ -43,7 +51,7 @@
 						</label>
 					</div>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" id="loginbtn" onclick="javascript:clickbtn();">
 							로그인
 						</button>
 					</div>

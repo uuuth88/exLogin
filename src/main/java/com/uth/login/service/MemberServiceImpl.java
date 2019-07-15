@@ -1,6 +1,7 @@
 package com.uth.login.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int memberjoin(MemberVO memberVO) {
 		return dao.join(memberVO);
+	}
+
+	@Override
+	public MemberVO memberlogin(Map<String, String> map) {
+		return dao.login(map);
 	}
 
 }

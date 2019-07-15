@@ -12,7 +12,17 @@
 <body>
 	<!-- 네비게이션 바 -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	
+<!-- 로그인 안 했을 때 -->	
+	<c:if test="${loginMember==null }">
 		<a class="navbar-brand" href="#">uth</a>
+	</c:if>
+<!-- /로그인 안 했을 때 -->	
+<!-- 로그인 했을 때 -->	
+	<c:if test="${loginMember!=null }">
+		<a class="navbar-brand" href="#"><b>${loginMember.member_name }</b>님 안녕하세요! </a>
+	</c:if>
+<!-- /로그인 했을 때 -->	
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -55,8 +65,8 @@
 						<tr>
 						<th>#</th>
 						<th>아이디</th>
-						<th>비밀번호</th>
 						<th>이름</th>
+						<th>이메일</th>
 						<th>가입일</th>
 						</tr>
 					</thead>

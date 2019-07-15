@@ -1,7 +1,8 @@
 package com.uth.login.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,6 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
-	@Autowired
-	private MemberVO memberVO;
 /*
  * 로그인 하지 않으면 접근하지 못하게 만들기	
  */
@@ -57,8 +56,16 @@ public class MemberController {
 		return "member/login";
 	}
 	@PostMapping("/login")
-	public void memberLogin(String id, String pw) {
+	public String memberLogin(@RequestParam Map<String, String> map, HttpSession session) {
 		
+		MemberVO memberVO = service.memberlogin(map);
+		
+		if(memberVO != null) {
+			session.setAttribute("loginMember", memberVO);
+			return "redirect:/member/list";
+		}else {
+			return "redirect:/member/login";
+		}
 	}
 	
 	
