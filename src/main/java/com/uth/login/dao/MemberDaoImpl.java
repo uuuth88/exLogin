@@ -1,7 +1,6 @@
 package com.uth.login.dao;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,13 @@ public class MemberDaoImpl implements MemberDao {
 		int cnt = 0;
 		cnt = ss.insert("com.uth.mapper.memberMapper.memberjoin", memberVO);
 		return cnt;
+	}
+
+	@Override
+	public MemberVO login(Map<String, String> map) {
+		MemberVO vo = new MemberVO();
+		vo = ss.selectOne("com.uth.mapper.memberMapper.memberlogin", map);
+		return vo;
 	}
 
 }

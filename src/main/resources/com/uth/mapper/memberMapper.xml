@@ -14,6 +14,11 @@
 		VALUES (#{member_id}, #{member_pw}, #{member_name}, #{member_email}, sysdate)
 	</insert>
 	
+	<select id="memberlogin" resultType="memberVO" parameterType="java.util.Map">
+		SELECT * FROM tbl_member
+		WHERE member_id = #{member_id} AND member_pw = #{member_pw}
+	</select>
+	
 </mapper>  
 
 
