@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
      pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +67,7 @@
 							<td><c:out value="${member.member_id }"/></td>
 							<td><c:out value="${member.member_name }"/></td>
 							<td><c:out value="${member.member_email }"/></td>
-							<td><c:out value="${member.regdate }"/></td>
+							<td><fmt:formatDate pattern="yyyy/MM/dd" value="${member.regdate }"/></td>
 							</tr>
 						</c:forEach>
 					</tbody>

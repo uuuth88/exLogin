@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<<c:set value="${pageContext.request.contextPath }" var="contextPath"></c:set>
+<c:set value="${pageContext.request.contextPath }" var="contextPath"/>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,36 +22,35 @@
 	<link rel="stylesheet" type="text/css" href="../resources/css/main.css">
 <!--===============================================================================================-->
 
-<!-- 자바스크립트  -->
 
 </head>
 <body>
+
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('../resources/images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="post" action="${contextPath }/member/join">
+				<form class="login100-form validate-form" id="joinForm" method="post" action="${contextPath }/member/join">
 					<span class="login100-form-title p-b-34 p-t-27">
 						J O I N
 					</span>
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="id" placeholder="ID">
+						<input class="input100" type="text" name="member_id" placeholder="ID">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="member_pw" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="name" placeholder="Name">
+						<input class="input100" type="text" name="member_name" placeholder="Name">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="email" placeholder="Doe@uth.com">
+						<input class="input100" type="text" name="member_email" placeholder="Doe@uth.com">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 					<div class="container-login100-form-btn">
-<!-- 자바스크립트 구현 -->					
-						<button class="login100-form-btn" onclick="">
+						<button class="login100-form-btn" id="joinbtn" onclick="javascript:clickBtn();">
 							회원가입
 						</button>
 					</div>
@@ -64,6 +63,12 @@
 			</div>
 		</div>
 	</div>
+<!-- 자바스크립트  -->
+	<script type="text/javascript">
+		function clickBtn(){
+			document.getElementById("joinForm").submit();
+		}
+	</script>	
 <!--===============================================================================================-->
 	<script src="../resources/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../resources/vendor/animsition/js/animsition.min.js"></script>

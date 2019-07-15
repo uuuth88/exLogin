@@ -6,13 +6,14 @@
 <mapper namespace="com.uth.mapper.memberMapper">
 
 	<select id="memberlist" resultType="memberVO">
-		SELECT * FROM tbl_member ORDER BY regdate desc;
+		SELECT * FROM tbl_member ORDER BY regdate desc
 	</select>
 	
 	<insert id="memberjoin" parameterType="memberVO">
 		INSERT INTO tbl_member(member_id, member_pw, member_name, member_email, regdate)
 		VALUES (#{member_id}, #{member_pw}, #{member_name}, #{member_email}, sysdate)
 	</insert>
+	
 </mapper>  
 
 

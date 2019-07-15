@@ -34,21 +34,30 @@ public class MemberController {
 		model.addAttribute("memberlist", memberlist);
 		
 	}
+	
 /*
  * 회원가입 메소드 구현 후 로그인 페이지(/member/login)로 보내기	
  */
-	@PostMapping("/join")
-	public String memberJoin(Model model) {
-		MemberVO vo = new MemberVO();
-		vo.setMember_id(requ);
-		
-		return "redirect:member/login";
+	@GetMapping("/join")
+	public String memberJoin() {
+		return "member/join";
 	}
+	@PostMapping("/join")
+	public String memberJoin(MemberVO memberVO) {
+		int cnt = 0;
+		cnt = service.memberjoin(memberVO);
+		return cnt==1 ? "member/login" : "member/join";
+	}
+	
 /*
  * 로그인 후 리스트 페이지(/member/list)로 보내기
  */
 	@GetMapping("/login")
-	public void memberLogin() {
+	public String memberLogin() {
+		return "member/login";
+	}
+	@PostMapping("/login")
+	public void memberLogin(String id, String pw) {
 		
 	}
 	
