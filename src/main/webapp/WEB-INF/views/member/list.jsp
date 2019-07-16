@@ -90,7 +90,7 @@
 				<table class="table table-striped table-sm">
 					<thead>
 						<tr>
-						<th>#</th>
+						<td>#</td>
 						<th>아이디</th>
 						<th>이름</th>
 						<th>이메일</th>
@@ -100,7 +100,14 @@
 					<tbody>
 						<c:forEach items="${memberlist }" var="member">
 							<tr>
-							<td>#</td>
+							<c:choose>
+								<c:when test="${member.member_id eq loginMember.member_id }">
+									<td><span data-toggle="modal" data-target="#exampleModal"><i class="far fa-user-circle"></i></span></td>
+								</c:when>
+								<c:otherwise>
+									<td>#</td>
+								</c:otherwise>
+							</c:choose>
 							<td><c:out value="${member.member_id }"/></td>
 							<td><c:out value="${member.member_name }"/></td>
 							<td><c:out value="${member.member_email }"/></td>
@@ -114,6 +121,30 @@
 		</div>
 	</div>
 	<!-- /멤버 리스트 -->
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+		  	<b>아이디</b> : <c:out value="${loginMember.member_id }"/><br>
+		  	<b>이 름</b> :  <c:out value="${loginMember.member_name }"/><br>
+		  	<b>이메일</b> : <c:out value="${loginMember.member_email }"/><br>
+		  	<b>가입일</b> : <fmt:formatDate pattern="yyyy/MM/dd" value="${loginMember.regdate }"/><br>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+	        <button type="button" class="btn btn-danger">탈퇴</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
