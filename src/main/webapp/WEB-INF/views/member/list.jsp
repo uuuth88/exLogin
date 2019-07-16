@@ -2,12 +2,20 @@
      pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<c:set value="${pageContext.request.contextPath }" var="contextPath"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../common/header.jsp" %>
+<script type="text/javascript">
+	function linkModifyForm() {
+// 		var modForm = document.getElementById("#modLinkForm");
+// 		document.modForm.action = "${contextPath}/member/modify?member_id=${loginMember.member_id}";
+		document.modForm.submit();
+	}
+</script>
 </head>
 <body>
 	<!-- 네비게이션 바 -->
@@ -31,18 +39,23 @@
 				<li class="nav-item active">
 					<a class="nav-link" href="#">홈 <span class="sr-only">(current)</span></a>
 				</li>
+	<c:if test="${loginMember!=null }">
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						회원정보
 					</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<!-- 회원 정보 변경 기능 추가하기 -->				
-					<a class="dropdown-item" href="#">회원정보 변경하기</a>
+<!-- 회원 정보 변경 기능 추가하기 -->
+				<form action="${contextPath }/member/modify" method="get" id="modLinkForm" name="modForm">
+					<input type="hidden" name="member_id" value="${loginMember.member_id }">
+					<a class="dropdown-item" href="javascript:linkModifyForm();">회원정보 변경하기</a>
+				</form>				
 <!-- /회원 정보 변경 기능 추가하기 -->				
 				<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">로그아웃</a>
 				</div>
 				</li>
+	</c:if>				
 			</ul>
 <!-- AJAX 이용해 회원 찾기 기능 -->			
 			<form class="form-inline my-2 my-lg-0">

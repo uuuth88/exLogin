@@ -10,4 +10,6 @@ public interface MemberService {
 	public List<MemberVO> memberlist();
 	public int memberjoin(MemberVO memberVO);
 	public MemberVO memberlogin(Map<String, String> map);
+	public MemberVO selectMember(String id);
+	public int membermodify(MemberVO memberVO);
 }

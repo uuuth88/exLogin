@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.uth.login.model.MemberVO;
 import com.uth.login.service.MemberService;
@@ -67,6 +68,25 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 	}
-	
-	
+
+/*
+ * 로그인 후 드롭다운 메뉴에서 회원정보 수정 클릭 
+ * 매핑된 주소로 수정 페이지로 이동하고 수정할 데이터를 입력받은 후
+ * 리스트 페이지로 이동하기
+ */
+	@GetMapping("/modify")
+	public ModelAndView memberModify(@RequestParam("member_id") String id) {
+		MemberVO vo = service.selectMember(id);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/member/modify");
+		mav.addObject("modifyMember", vo);
+		
+		return mav;
+	}
+	@PostMapping("/modify")
+	public String memberModify(MemberVO memberVO) {
+		
+		return null;
+	}
 }

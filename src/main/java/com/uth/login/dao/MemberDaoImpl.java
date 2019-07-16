@@ -35,5 +35,19 @@ public class MemberDaoImpl implements MemberDao {
 		return vo;
 	}
 
+	@Override
+	public MemberVO selectMember(String id) {
+		MemberVO vo = new MemberVO();
+		vo = ss.selectOne("com.uth.mapper.memberMapper.selectmember", id);
+		return vo;
+	}
+
+	@Override
+	public int modify(MemberVO memberVO) {
+		int cnt = 0;
+		cnt = ss.update("com.uth.mapper.memberMapper.membermodify", memberVO);
+		return cnt;
+	}
+
 }
 

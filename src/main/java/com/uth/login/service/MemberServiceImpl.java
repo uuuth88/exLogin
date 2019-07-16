@@ -28,5 +28,15 @@ public class MemberServiceImpl implements MemberService {
 		return dao.login(map);
 	}
 
+	@Override
+	public MemberVO selectMember(String id) {
+		return dao.selectMember(id);
+	}
+
+	@Override
+	public int membermodify(MemberVO memberVO) {
+		return dao.modify(memberVO);
+	}
+
 }
 
