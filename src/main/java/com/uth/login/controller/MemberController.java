@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uth.login.model.MemberVO;
 import com.uth.login.service.MemberService;
+import com.uth.login.util.Criteria;
 
 @Controller
 @RequestMapping("/member/*")
@@ -24,12 +25,22 @@ public class MemberController {
 /*
  * 로그인 하지 않으면 접근하지 못하게 만들기	
  */
+//	@GetMapping("/list")
+//	public void memberList(Model model){
+//		
+//		List<MemberVO> memberlist = new ArrayList<>();
+//		
+//		memberlist = service.memberlist();
+//		
+//		model.addAttribute("memberlist", memberlist);
+//		
+//	}
 	@GetMapping("/list")
-	public void memberList(Model model){
+	public void memberList(Model model, Criteria cri){
 		
 		List<MemberVO> memberlist = new ArrayList<>();
 		
-		memberlist = service.memberlist();
+		memberlist = service.memberlist(cri);
 		
 		model.addAttribute("memberlist", memberlist);
 		

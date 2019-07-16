@@ -7,20 +7,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.uth.login.model.MemberVO;
+import com.uth.login.util.Criteria;
 @Repository
 public class MemberDaoImpl implements MemberDao {
 	@Autowired
 	private SqlSession ss;
 
+//	@Override
+//	public List<MemberVO> getList() {
+//		List<MemberVO> memberlist = new ArrayList<>();
+//		
+//		memberlist = ss.selectList("com.uth.mapper.memberMapper.memberlist");
+//		
+//		return memberlist;
+//	}
+
 	@Override
-	public List<MemberVO> getList() {
+	public List<MemberVO> getList(Criteria cri) {
 		List<MemberVO> memberlist = new ArrayList<>();
-		
-		memberlist = ss.selectList("com.uth.mapper.memberMapper.memberlist");
-		
+		memberlist = ss.selectList("com.uth.mapper.memberMapper.search", cri);
 		return memberlist;
 	}
-
+	
 	@Override
 	public int join(MemberVO memberVO) {
 		int cnt = 0;
@@ -48,6 +56,7 @@ public class MemberDaoImpl implements MemberDao {
 		cnt = ss.update("com.uth.mapper.memberMapper.membermodify", memberVO);
 		return cnt;
 	}
+
 
 }
 

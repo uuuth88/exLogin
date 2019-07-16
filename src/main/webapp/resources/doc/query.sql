@@ -13,3 +13,20 @@ WHERE member_id = #{member_id}
 UPDATE tbl_member
 SET member_pw = #{member_pw} , member_email = #{member_email}
 WHERE member_id = #{member_id}
+-- 검색 쿼리
+SELECT *
+FROM (
+		SELECT member_id, member_name, member_email, regdate
+		FROM tbl_member
+		<where>
+		    <if test="type=='id'.toString()">
+				(member_id LIKE '%'||#{keyword}||'%')
+			</if>
+			<if test="type=='name'.toString()">
+				(member_name LIKE '%'||#{keyword}||'%')
+			</if>
+			<if test="type=='email'.toString()">
+				(member_email LIKE '%'||#{keyword}||'%')
+			</if>
+		</where>
+	 )

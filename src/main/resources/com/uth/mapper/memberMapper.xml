@@ -8,6 +8,26 @@
 	<select id="memberlist" resultType="memberVO">
 		SELECT * FROM tbl_member ORDER BY regdate desc
 	</select>
+	<!-- 검색 처리 -->
+	<select id="search" resultType="memberVO">
+		SELECT *
+		FROM (
+				SELECT member_id, member_name, member_email, regdate
+				FROM tbl_member
+				<where>
+				    <if test="type=='id'.toString()">
+						(member_id LIKE '%'||#{keyword}||'%')
+					</if>
+					<if test="type=='name'.toString()">
+						(member_name LIKE '%'||#{keyword}||'%')
+					</if>
+					<if test="type=='email'.toString()">
+						(member_email LIKE '%'||#{keyword}||'%')
+					</if>
+				</where>
+			 )
+		ORDER BY regdate desc
+	</select>
 	
 	<insert id="memberjoin" parameterType="memberVO">
 		INSERT INTO tbl_member(member_id, member_pw, member_name, member_email, regdate)
@@ -29,6 +49,7 @@
 		SET member_pw = #{member_pw} , member_email = #{member_email}
 		WHERE member_id = #{member_id}
 	</update>
+	
 	
 </mapper>  
 

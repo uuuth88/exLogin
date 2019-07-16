@@ -8,16 +8,22 @@ import org.springframework.stereotype.Service;
 
 import com.uth.login.dao.MemberDao;
 import com.uth.login.model.MemberVO;
+import com.uth.login.util.Criteria;
 @Service
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDao dao;
 	
-	@Override
-	public List<MemberVO> memberlist() {
-		return dao.getList();
-	}
+//	@Override
+//	public List<MemberVO> memberlist() {
+//		return dao.getList();
+//	}
 
+	@Override
+	public List<MemberVO> memberlist(Criteria cri) {
+		return dao.getList(cri);
+	}
+	
 	@Override
 	public int memberjoin(MemberVO memberVO) {
 		return dao.join(memberVO);
@@ -37,6 +43,7 @@ public class MemberServiceImpl implements MemberService {
 	public int membermodify(MemberVO memberVO) {
 		return dao.modify(memberVO);
 	}
+
 
 }
 

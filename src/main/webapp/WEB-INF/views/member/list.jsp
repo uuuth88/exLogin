@@ -15,7 +15,11 @@
 			document.modForm.submit();
 		}
 	</script>
-
+	<script type="text/javascript">
+		function searchlist() {
+			document.searchForm.submit();
+		}
+	</script>
 </head>
 <body>
 	<!-- 네비게이션 바 -->
@@ -60,9 +64,16 @@
 	</c:if>				
 			</ul>
 <!-- AJAX 이용해 회원 찾기 기능 -->			
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">회원찾기</button>
+			<form class="form-inline my-2 my-lg-0" name="searchForm" action="${contextPath }/member/list" method="get">
+				<select name="type" class="form-control mr-sm-2">
+					<option value="" <c:out value="${cri.type==null?'selected':''}"/>>---</option>
+					<option value="id" <c:out value="${cri.type eq 'id'?'selected':''}"/>>아이디</option>
+					<option value="name" <c:out value="${cri.type eq 'name'?'selected':''}"/>>이름</option>
+					<option value="email" <c:out value="${cri.type eq 'email'?'selected':''}"/>>이메일</option>
+				</select>
+				<input class="form-control mr-sm-2" type="text" name="keyword" 
+					placeholder="Search" aria-label="Search" value='<c:out value="${cri.keyword }"/>'>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBtn" onclick="javascript:searchlist();">회원찾기</button>
 			</form>
 <!-- /AJAX 이용해 회원 찾기 기능 -->			
 		</div>
