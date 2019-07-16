@@ -57,7 +57,6 @@ public class MemberDaoImpl implements MemberDao {
 		return cnt;
 	}
 
-
 }
 
 

@@ -15,6 +15,7 @@
 			document.modForm.submit();
 		}
 	</script>
+	
 	<script type="text/javascript">
 		function searchlist() {
 			document.searchForm.submit();
@@ -63,7 +64,7 @@
 				</li>
 	</c:if>				
 			</ul>
-<!-- AJAX 이용해 회원 찾기 기능 -->			
+			<!-- 회원 찾기 기능 -->			
 			<form class="form-inline my-2 my-lg-0" name="searchForm" action="${contextPath }/member/list" method="get">
 				<select name="type" class="form-control mr-sm-2">
 					<option value="" <c:out value="${cri.type==null?'selected':''}"/>>---</option>
@@ -75,7 +76,7 @@
 					placeholder="Search" aria-label="Search" value='<c:out value="${cri.keyword }"/>'>
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBtn" onclick="javascript:searchlist();">회원찾기</button>
 			</form>
-<!-- /AJAX 이용해 회원 찾기 기능 -->			
+			<!-- /회원 찾기 기능 -->			
 		</div>
 	</nav>
 	<!-- /네비게이션 바 -->
