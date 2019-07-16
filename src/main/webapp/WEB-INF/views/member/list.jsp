@@ -9,13 +9,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../common/header.jsp" %>
-<script type="text/javascript">
-	function linkModifyForm() {
-// 		var modForm = document.getElementById("#modLinkForm");
-// 		document.modForm.action = "${contextPath}/member/modify?member_id=${loginMember.member_id}";
-		document.modForm.submit();
-	}
-</script>
+
+	<script type="text/javascript">
+		function linkModifyForm() {
+			document.modForm.submit();
+		}
+	</script>
+
 </head>
 <body>
 	<!-- 네비게이션 바 -->
@@ -45,12 +45,14 @@
 						회원정보
 					</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<!-- 회원 정보 변경 기능 추가하기 -->
-				<form action="${contextPath }/member/modify" method="get" id="modLinkForm" name="modForm">
+				
+				<!-- 회원 정보 변경 기능 추가하기 -->
+				<form action="${contextPath }/member/modify" method="get" name="modForm">
 					<input type="hidden" name="member_id" value="${loginMember.member_id }">
 					<a class="dropdown-item" href="javascript:linkModifyForm();">회원정보 변경하기</a>
 				</form>				
-<!-- /회원 정보 변경 기능 추가하기 -->				
+				<!-- /회원 정보 변경 기능 추가하기 -->				
+
 				<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">로그아웃</a>
 				</div>

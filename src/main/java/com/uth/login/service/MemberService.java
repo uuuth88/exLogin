@@ -12,4 +12,6 @@ public interface MemberService {
 	public MemberVO memberlogin(Map<String, String> map);
 	public MemberVO selectMember(String id);
 	public int membermodify(MemberVO memberVO);
+
+
 }

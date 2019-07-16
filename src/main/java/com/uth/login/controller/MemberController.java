@@ -84,6 +84,7 @@ public class MemberController {
 		
 		return mav;
 	}
+	
 	@PostMapping("/modify")
 	public String memberModify(MemberVO memberVO) {
 		
