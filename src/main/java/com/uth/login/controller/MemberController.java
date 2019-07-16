@@ -87,7 +87,7 @@ public class MemberController {
 	
 	@PostMapping("/modify")
 	public String memberModify(MemberVO memberVO) {
-		
-		return null;
+		int cnt = service.membermodify(memberVO);
+		return cnt==1 ? "member/login" : "member/modify";
 	}
 }
