@@ -50,7 +50,7 @@
 				<li class="nav-item active">
 					<a class="nav-link" href="#">홈 <span class="sr-only">(current)</span></a>
 				</li>
-	<c:if test="${not empty loginMember }">
+			<c:if test="${not empty loginMember }">
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						회원정보
@@ -63,12 +63,25 @@
 					<a class="dropdown-item" href="javascript:linkModifyForm();">회원정보 변경하기</a>
 				</form>				
 				<!-- /회원 정보 변경 기능 추가하기 -->				
-
+		
 				<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="${contextPath }/member/logout">로그아웃</a>
 				</div>
 				</li>
-	</c:if>				
+			</c:if>
+			<c:if test="${empty loginMember }">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						로그인하세요!
+					</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="${contextPath }/member/login">로그인</a>
+		
+				<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="${contextPath }/member/join">회원가입</a>
+				</div>
+				</li>
+			</c:if>				
 			</ul>
 			<!-- 회원 찾기 기능 -->			
 			<form class="form-inline my-2 my-lg-0" name="searchForm" action="${contextPath }/member/list" method="get">
