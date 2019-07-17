@@ -1,19 +1,16 @@
 package com.uth.login.controller;
 
 import java.util.*;
-
 import javax.servlet.http.HttpSession;
-
-import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.uth.login.model.MemberVO;
 import com.uth.login.service.MemberService;
 import com.uth.login.util.Criteria;
+
 
 @Controller
 @RequestMapping("/member/*")
@@ -79,6 +76,15 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 	}
+	
+	@GetMapping("/logout")
+	public String memberlogout(HttpSession session) {
+		if(session != null) {
+			session.invalidate();
+			return "redirect:/member/list";
+		}
+		return "redirect:/member/login";
+	}
 
 /*
  * 로그인 후 드롭다운 메뉴에서 회원정보 수정 클릭 
@@ -100,5 +106,14 @@ public class MemberController {
 	public String memberModify(MemberVO memberVO) {
 		int cnt = service.membermodify(memberVO);
 		return cnt==1 ? "member/login" : "member/modify";
+	}
+	
+	@PostMapping("/delete")
+	public String memberDelete(@RequestParam("delete_id") String id, HttpSession session) {
+		service.memberdelete(id);
+		if(session != null) {
+			session.removeAttribute("loginMember");
+		}
+		return "redirect:/member/list";
 	}
 }

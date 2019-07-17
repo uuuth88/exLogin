@@ -14,5 +14,6 @@ public interface MemberDao {
 	public MemberVO login(Map<String, String> map);
 	public MemberVO selectMember(String id);
 	public int modify(MemberVO memberVO);
+	public int delete(String id);
 }
 

@@ -52,6 +52,10 @@
 		WHERE member_id = #{member_id}
 	</update>
 	
+	<delete id="memberdelete" parameterType="String">
+		DELETE FROM tbl_member
+		WHERE member_id = #{member_id}
+	</delete>
 	
 </mapper>  
 

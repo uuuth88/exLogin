@@ -30,3 +30,6 @@ FROM (
 			</if>
 		</where>
 	 )
+-- 회원 탈퇴
+DELETE FROM tbl_member
+WHERE member_id = #{member_id}	 

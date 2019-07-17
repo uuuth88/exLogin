@@ -44,6 +44,11 @@ public class MemberServiceImpl implements MemberService {
 		return dao.modify(memberVO);
 	}
 
+	@Override
+	public int memberdelete(String id) {
+		return dao.delete(id);
+	}
+
 
 }
 

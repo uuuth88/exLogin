@@ -45,12 +45,16 @@ public class MemberControllerTest {
 	@Test
 	public void test() {
 		try {
-			cri = new Criteria();
-			cri.setType("");
-			cri.setKeyword("");
+//			log.info(dao.delete("sonny"));
 			
-			List<MemberVO> list = dao.getList(cri);
-			list.forEach(member -> log.info(member));
+//			cri = new Criteria();
+//			cri.setType("");
+//			cri.setKeyword("");
+//			log.info(dao.getList(cri));
+			
+//			
+//			List<MemberVO> list = dao.getList(cri);
+//			list.forEach(member -> log.info(member));
 			
 //			log.info(list);
 			

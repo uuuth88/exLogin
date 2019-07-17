@@ -21,18 +21,24 @@
 			document.searchForm.submit();
 		}
 	</script>
+	
+	<script type="text/javascript">
+		function deletemember(){
+			document.deleteForm.submit();
+		}
+	</script>
 </head>
 <body>
 	<!-- 네비게이션 바 -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	
 <!-- 로그인 안 했을 때 -->	
-	<c:if test="${loginMember==null }">
+	<c:if test="${empty loginMember }">
 		<a class="navbar-brand" href="#">uth</a>
 	</c:if>
 <!-- /로그인 안 했을 때 -->	
 <!-- 로그인 했을 때 -->	
-	<c:if test="${loginMember!=null }">
+	<c:if test="${not empty loginMember }">
 		<a class="navbar-brand" href="#"><b>${loginMember.member_name }</b>님 안녕하세요! </a>
 	</c:if>
 <!-- /로그인 했을 때 -->	
@@ -44,7 +50,7 @@
 				<li class="nav-item active">
 					<a class="nav-link" href="#">홈 <span class="sr-only">(current)</span></a>
 				</li>
-	<c:if test="${loginMember!=null }">
+	<c:if test="${not empty loginMember }">
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						회원정보
@@ -59,7 +65,7 @@
 				<!-- /회원 정보 변경 기능 추가하기 -->				
 
 				<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">로그아웃</a>
+					<a class="dropdown-item" href="${contextPath }/member/logout">로그아웃</a>
 				</div>
 				</li>
 	</c:if>				
@@ -140,11 +146,14 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-	        <button type="button" class="btn btn-danger">탈퇴</button>
+	        <button type="button" class="btn btn-danger" onclick="javascript:deletemember();">탈퇴</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>
+	<form name="deleteForm" method="post" action="${contextPath }/member/delete">
+		<input type="hidden" name="delete_id" value="${loginMember.member_id }">
+	</form>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

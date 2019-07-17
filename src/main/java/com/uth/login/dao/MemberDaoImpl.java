@@ -57,6 +57,13 @@ public class MemberDaoImpl implements MemberDao {
 		return cnt;
 	}
 
+	@Override
+	public int delete(String id) {
+		int cnt = 0;
+		cnt = ss.delete("com.uth.mapper.memberMapper.memberdelete", id);
+		return cnt;
+	}
+
 }
 
 
